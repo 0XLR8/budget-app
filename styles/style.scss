@@ -1,0 +1,310 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+*{
+    box-sizing: border-box;
+    user-select: none;
+}
+h1, h2, h3, h4, p{
+    margin: 0px 0px 10px 0px;
+}
+
+/* Header Section */
+
+header{
+    padding: 50px 0px;
+    background-image: url("../img/mountain.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+
+    .header-item{
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.555);
+        border-radius: 15px;
+        max-width: 450px;
+        margin: 0px auto;
+        text-align: center;
+        
+        p{
+            font-size: 18px;
+            font-weight: 400;
+        }
+        h1{
+            margin: 20px;
+            font-weight: 400;
+            font-size: 42px;
+        }
+        .income{
+            padding: 12px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 15px;
+            color: black;
+            font-weight: 500;
+            
+            .income-value{
+                float: right;
+                color: white;
+                font-weight: bold;
+            }
+        }
+        :nth-child(3){
+            background-color: rgb(5, 210, 206);
+        }
+        :nth-child(4){
+            background-color: rgb(252, 90, 90);
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.control-bar{
+    background-color: rgb(247, 247, 247);
+    padding: 10px;
+    box-shadow: 0px -1px 5px rgb(177, 177, 177);
+    margin-bottom: 40px;
+    
+    &-inner{
+        display: flex;
+        justify-content: space-between;
+        max-width: 800px;
+        margin: 0px auto;
+        color: rgb(97, 97, 97);
+        
+        input, button{
+            display: block;
+            color: rgb(97, 97, 97);
+        }
+
+        &-item{
+            margin: 0px 10px;
+            flex-grow: 1;
+        }
+
+        .select-box {
+            position: relative;
+            display: block;
+            width: 55px;
+            font-size: 20px;
+            flex-grow: 0;
+            
+            &__current {
+                position: relative;
+                box-shadow: 0px 0px 4px rgb(206, 206, 206);
+                cursor: pointer;
+                border-radius: 6px;
+                outline: none;
+                
+                &:focus {
+                    & + .select-box__list {
+                    opacity: 1;
+            
+                    // We have to set "animation-name: none;" to make the list visible (read below how it works)
+            
+                    animation-name: none;
+                    
+                    .select-box__option {
+                        cursor: pointer;
+                    }
+                    }
+                    
+                    .select-box__icon {
+                    transform: translateY(-50%) rotate(180deg);
+                    }
+                }
+            }
+            
+            &__icon {
+                position: absolute;
+                top: 50%;
+                right: 9px;
+                transform: translateY(-50%);
+                width: 10px;
+                transition: 0.2s ease;
+            }
+            
+            &__value {
+                display: flex;
+            }
+            
+            &__input {
+                display: none;
+            
+                &:checked + .select-box__input-text {
+                    display: block;
+                }
+            }
+            
+            &__input-text {
+                display: none;
+                width: 100%;
+                border-radius: 6px;
+                margin: 0;
+                padding: 7px 10px;
+                background-color: #fff;
+            }
+            
+            &__list {
+                position: absolute;
+                top: 26px;
+                width: 100%;
+                padding: 0;
+                list-style: none;
+                opacity: 0;
+                
+                // We need to use animation with delay.
+                // Otherwise the click event will not have time to run on label, because this element disapears immediately when .select-box__current element loses the focus.
+                // This delay will not be noticed because we set "opacity" to "0".
+                // We also use "animation-fill-mode: forwards" to make the list stay hidden.
+                
+                animation-name: HideList;
+                animation-duration: 0.5s;
+                animation-delay: 0.5s;
+                animation-fill-mode: forwards;
+                animation-timing-function: step-start;
+                box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
+            }
+            
+            &__option {
+                display: block;
+                padding: 7px 10px;
+                box-shadow: 0px 0px 4px rgb(206, 206, 206);
+                background-color: #fff;
+                border-radius: 6px;
+            
+                &:hover,
+                &:focus {
+                    color: #546c84;
+                    background-color: #fbfbfb;
+                }
+            }
+        }
+        
+        @keyframes HideList {
+            from {
+                transform: scaleY(0);
+            }
+            to {
+                transform: scaleY(0);
+            }
+        }  
+        
+        &-input{
+            border: none;
+            background-color: white;
+            box-shadow: 0px 0px 4px rgb(206, 206, 206);
+            border-radius: 6px;
+            font-size: 15px;
+            padding: 7px 10px;
+        }
+        #description, #value{
+            user-select: initial;
+        }
+
+        button{
+            padding: 0px;
+            margin: 0px 15px;
+            border: none;
+            background-color: #F7F7F7;
+            font-size: 30px;
+            position: relative;
+            bottom: 1px;
+            cursor: pointer;
+
+            i{
+                transition: 0.3s ease-in-out;
+                color: rgb(0, 175, 0);
+            }
+            i:hover{
+                transform: rotate(360deg) scale(1.2); 
+            }
+        }
+    }
+}
+
+.list-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .first-list, 
+    .second-list{
+        width: 45%;
+        margin: 0px 20px;
+
+        h2{
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+
+    .first-list h2{
+        color: #05D2CE;
+    }
+
+    .second-list h2{
+        color: #FC5A5A;
+    }
+
+    ul{
+        list-style: none;
+        padding: 0px;
+
+        li{
+            padding: 10px 0px;
+            font-size: 15px;
+            color: rgb(77, 77, 77);
+            cursor: pointer;
+            border-top: 1px solid rgb(228, 228, 228);
+
+            span{
+                font-weight: 500;
+            }
+
+            .span-income{
+                float: right;
+                color: #05D2CE;
+            }
+
+            .span-outcome{
+                float: right;
+                color: #FC5A5A;
+            }
+
+            .span-value{
+                position: relative;
+                left: 45px;
+                transition: 0.3s ease-in-out;
+            }
+
+            i{
+                font-size: 18px;
+                margin: 0px 15px;
+                padding: 0px;
+                transition: 0.3s ease-in-out;
+                transform: scale(0);
+            }
+
+            &:hover i{
+                visibility: visible;
+                transform: scale(1.2);
+            }
+            &:hover .span-value{
+                left: 0px;
+            }
+        }
+
+        li:nth-child(even){
+            background-color: rgb(248, 248, 248);
+        }
+
+        li:last-child{
+            border-bottom: 1px solid rgb(228, 228, 228);
+        }
+    }
+}

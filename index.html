@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container">
+        <header>
+            <div class="header-item">
+                <p>Available Budget in <span id="month">Month</span> <span id="year">Year</span></p>
+                <h1 id="balance">0</h1>
+                <p class="income">Income <span class="income-value" id="income-val">0</span></p>
+                <p class="income">Outcome <span class="income-value" id="outcome-val">0</span></p>
+            </div>
+        </header>
+        <div class="control-bar">
+            <div class="control-bar-inner">
+                <div class="select-box control-bar-inner-item">
+                    <div class="select-box__current" tabindex="1">
+                        <div class="select-box__value">
+                            <input class="select-box__input" type="radio" id="0" value="+" name="Ben" checked="checked"/>
+                            <p class="select-box__input-text">+</p>
+                        </div>
+                        <div class="select-box__value">
+                            <input class="select-box__input" type="radio" id="1" value="-" name="Ben" checked="checked"/>
+                            <p class="select-box__input-text">-</p>
+                        </div><img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true"/>
+                    </div>
+                    <ul class="select-box__list">
+                        <li>
+                            <label class="select-box__option" for="0" aria-hidden="aria-hidden">+</label>
+                        </li>
+                        <li>
+                            <label class="select-box__option" for="1" aria-hidden="aria-hidden">-</label>
+                        </li>
+                    </ul>
+                </div>
+                <input type="text" id="description" class="control-bar-inner-input control-bar-inner-item first-input" placeholder="Add description">
+                <input type="text" id="value" class="control-bar-inner-input control-bar-inner-item" style="max-width: 120px" placeholder="Value">
+                <button id="cb-btn"><i class="far fa-check-circle"></i></button>
+            </div>
+        </div>
+        <div class="list-container">
+            <div class="first-list">
+                <h2>INCOME</h2>
+                <ul id="income-list">
+                </ul>
+            </div>
+            <div class="second-list">
+                <h2>EXPENSES</h2>
+                <ul id="outcome-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="script/script.js"></script>
+
+</body>
+</html>
